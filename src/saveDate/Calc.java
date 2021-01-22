@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 
 public class Calc {
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
@@ -34,11 +36,17 @@ public class Calc {
 			ResultSet rs1 = statement1.getResultSet();
 			ResultSet rs2 = statement2.getResultSet();
 
-			if(rs1.next() && rs2.next()) {
-				System.out.println("----------------------");
-				System.out.println(rs1.getTimestamp("stamping"));
-				System.out.println(rs2.getTimestamp("stamping"));
-			}
+			Timestamp ts1 = rs1.getTimestamp("stamping");
+			Timestamp ts2 = rs2.getTimestamp("stamping");
+
+			Date start = new Date(ts1.getTime());
+			Date leave = new Date(ts2.getTime());
+
+			// if(rs1.next() && rs2.next()) {
+				// System.out.println("----------------------");
+				// System.out.println(rs1.getTimestamp("stamping"));
+				// System.out.println(rs2.getTimestamp("stamping"));
+			// }
 
 
 		} catch (SQLException e) {
