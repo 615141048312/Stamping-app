@@ -10,12 +10,11 @@ import java.util.Date;
 
 public class Calc {
 	private static final String DRIVER = "com.mysql.jdbc.Driver";
-
 	private static final String URL = "jdbc:mysql://localhost:3306/save_date?user=user01&password=password01&useSSL=false";
+	private static final String SQL = "select stamping from stampings where id = ?";
+	public AtWork today = new AtWork();
 
-	private static final String SQL = "select * from stampings where id = ?";
-
-	public static void main (String[] args) throws ClassNotFoundException {
+	public AtWork stamps() throws ClassNotFoundException {
 
 		try {
 			Class.forName(DRIVER);
@@ -36,22 +35,15 @@ public class Calc {
 			ResultSet rs1 = statement1.getResultSet();
 			ResultSet rs2 = statement2.getResultSet();
 
-			Timestamp ts1 = rs1.getTimestamp("stamping");
-			Timestamp ts2 = rs2.getTimestamp("stamping");
-
-			Date start = new Date(ts1.getTime());
-			Date leave = new Date(ts2.getTime());
-
-			// if(rs1.next() && rs2.next()) {
-				// System.out.println("----------------------");
-				// System.out.println(rs1.getTimestamp("stamping"));
-				// System.out.println(rs2.getTimestamp("stamping"));
-			// }
-
+			// Date Date1 = new Date(rs1.getTime());
+			// Date Date2 = new Date(rs2.getTime());
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
+		// today.start = ;
+		// today.leave = ;
+		return today;
 	}
 }
