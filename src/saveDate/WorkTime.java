@@ -1,6 +1,6 @@
 package saveDate;
 
-public class Difference {
+public class WorkTime {
 	public int hour;
 	public int minute;
 }
