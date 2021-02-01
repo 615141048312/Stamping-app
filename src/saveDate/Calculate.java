@@ -8,10 +8,9 @@ public class Calculate {
 		workTime = new WorkTime();
 	}
 
-	public Access today = new Access();
-	public AtWork stamps = today.stamps();
-
 	public WorkTime calc() {
+		Access today = new Access();
+		AtWork stamps = today.stamps();
 		workTime.hour = calculateHours(stamps.leave, stamps.start);
 		workTime.minute = calculateMinute(stamps.leave, stamps.start);
 		return workTime;
