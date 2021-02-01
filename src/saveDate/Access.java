@@ -19,12 +19,11 @@ public class Access {
 	public Access() {
 		today = new AtWork();
 	}
-	public PreparedStatement statement1;
-	public PreparedStatement statement2;
-	public Date Date1;
-	public Date Date2;
 
-	public AtWork stamps(){
+	public AtWork stamps(){ //クラスメソッドにできる？でもしないほうがいいかも
+		Date Date1 = null;
+		Date Date2 = null;
+
 
 		try {
 			Class.forName(DRIVER);
@@ -33,9 +32,9 @@ public class Access {
 		}
 
 		try (Connection connection = DriverManager.getConnection(URL);
+				PreparedStatement statement1 = connection.prepareStatement(SQL);
+				PreparedStatement statement2 = connection.prepareStatement(SQL);
 				) {
-			statement1 = connection.prepareStatement(SQL);
-			statement2 = connection.prepareStatement(SQL);
 
 			statement1.setLong(1, 1L);
 			statement2.setLong(1, 2L);
